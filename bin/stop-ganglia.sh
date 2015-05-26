@@ -7,5 +7,5 @@ pushd . > /dev/null
 cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
-ansible -i $SCRIPT_PATH/../hosts/ansible_hosts master --sudo -m raw -a "service gmetad stop"
-ansible -i $SCRIPT_PATH/../hosts/ansible_hosts all --sudo -m raw -a "service ganglia-monitor stop"
+ansible -i $SCRIPT_PATH/../playbook/hosts master --sudo -m raw -a "service gmetad stop"
+ansible -i $SCRIPT_PATH/../playbook/hosts all --sudo -m raw -a "service ganglia-monitor stop"
