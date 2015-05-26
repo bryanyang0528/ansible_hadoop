@@ -1,0 +1,6 @@
+---
+- hosts: master
+  tasks:
+  - name: Stop yarn
+    shell: su - yarn -c '/usr/local/hadoop/sbin/stop-yarn.sh'
+  - shell: su - mapred -c '/usr/local/hadoop/sbin/mr-jobhistory-daemon.sh stop historyserver'

@@ -1,0 +1,21 @@
+- name: Copy Spark archive
+  copy: src=../../../packages/spark-{{ spark_version }}-bin-hadoop2.6.tgz dest=/tmp/spark-{{ spark_version }}-bin-hadoop2.6.tgz
+
+- name: Extract archive
+  command: chdir=/usr/local /bin/tar xvf /tmp/spark-1.3.1-bin-hadoop2.6.tgz -C /tmp/ creates=/tmp/spark-{{ spark_version }}-bin-hadoop2.6
+
+- name: Copy yarn shuffle assembly
+  shell: cp /tmp/spark-{{ spark_version }}-bin-hadoop2.6/lib/spark-{{ spark_version }}-yarn-shuffle.jar /usr/local/hadoop/share/hadoop/yarn
+
+- name: Change ownership of the shuffle assembly
+  file: path=/usr/local/hadoop/share/hadoop/yarn/spark-{{ spark_version }}-yarn-shuffle.jar owner=hadoop group=hadoop mode="u=rwx,g=rwx,o=rx"
+
+- name: Remove spark archive
+  shell: rm -rf /tmp/spark-{{ spark_version }}-bin-hadoop2.6*
+
+  
+  
+  
+  
+
+  

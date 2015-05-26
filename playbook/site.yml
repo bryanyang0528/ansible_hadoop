@@ -1,0 +1,45 @@
+- hosts: all
+  roles:
+  - hadoop_common 
+  
+- hosts: all
+  roles:
+  - hdfs_common
+  
+- hosts: master
+  roles:
+  - hdfs_namenode
+
+- hosts: slaves
+  roles:
+  - hdfs_datanode
+  
+- hosts: all
+  roles:
+  - yarn_common
+
+- hosts: slaves
+  roles:
+  - yarn_nodemanager
+
+- hosts: master
+  tasks:
+  - name: Configure hdfs dirs
+    shell: su - hdfs -c '/usr/local/hadoop/sbin/start-dfs.sh'
+  - shell: su - hdfs -c 'hdfs dfs -mkdir /tmp'
+  - shell: su - hdfs -c 'hdfs dfs -chmod -R ugo+rwx /tmp'
+  - shell: su - hdfs -c 'hdfs dfs -mkdir /tmp/hadoop-yarn'
+  - shell: su - hdfs -c 'hdfs dfs -chmod -R ugo+rwx /tmp/hadoop-yarn'
+  - shell: su - hdfs -c '/usr/local/hadoop/sbin/stop-dfs.sh'
+
+- hosts: master
+  roles:
+  - zookeeper_common
+
+- hosts: master
+  roles:
+  - zookeeper_server
+
+- hosts: slaves
+  roles:
+  - spark_common

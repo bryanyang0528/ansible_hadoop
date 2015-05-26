@@ -1,0 +1,7 @@
+- name: create the data dir
+  command: mkdir -p /data/hdfs/data creates=/data/hdfs/data
+
+- name: change dirs ownership
+  command: chown -R hdfs:hadoop /data/hdfs 
+
+  

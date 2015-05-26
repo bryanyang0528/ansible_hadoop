@@ -1,0 +1,67 @@
+- name: add group "hadoop"
+  group: name=hadoop state=present
+
+- name: add user "hadoop"
+  user: name=hadoop group=hadoop home=/home/hadoop state=present
+
+- name: add user "hdfs"
+  user: name=hdfs group=hadoop home=/home/hdfs shell=/bin/bash state=present force=yes generate_ssh_key=yes ssh_key_type=dsa ssh_key_bits=1024 remove=yes password=$6$rounds=100000$zyoKAlc5444dj.zS$M2v1uJi6owk6JdY21Ay0Ec3Zn1z0ecUqWtsjE7SWjfkkR1QSpOABx8AHpJNQhMLvPLEMyMl2tplwO8/0F0aN3/
+
+- name: hdfs user copy .bash_profile
+  template: src=bash_profile dest=/home/hdfs/.bash_profile owner=hdfs group=hadoop
+
+- name: fetch the hdfs user pub key
+  fetch: dest=/tmp/{{ ansible_hostname }}-hdfs_authorized_keys src=/home/hdfs/.ssh/id_dsa.pub flat=yes  
+
+- name: copy authorized_keys to the hdfs user
+  authorized_key: user=hdfs key="{{ item }}" state=present exclusive=yes manage_dir=yes
+  with_lines:
+           - cat /tmp/{{ ssh_master }}-hdfs_authorized_keys
+
+- name: add user "yarn"
+  user: name=yarn group=hadoop home=/home/yarn shell=/bin/bash state=present force=yes generate_ssh_key=yes ssh_key_type=dsa ssh_key_bits=1024 remove=yes password=$6$rounds=100000$4NCHLDr84LgvJ2CG$ECVUTnfYQ3Td.gc76ZSRxSN8RVl75vIMgCdtvEPXcQbQy3so39MkQPqGUNqHx0glktTMLhW0Te48K4DHvlMNS. 
+
+- name: yarn user copy .bash_profile
+  template: src=bash_profile dest=/home/yarn/.bash_profile owner=yarn group=hadoop
+
+- name: fetch the yarn user pub key
+  fetch: dest=/tmp/{{ ansible_hostname }}-yarn_authorized_keys src=/home/yarn/.ssh/id_dsa.pub flat=yes  
+
+- name: copy authorized_keys to the yarn user
+  authorized_key: user=yarn key="{{ item }}" state=present exclusive=yes manage_dir=yes
+  with_lines:
+           - cat /tmp/{{ ssh_master }}-yarn_authorized_keys
+
+- name: add user "mapred"
+  user: name=mapred group=hadoop home=/home/mapred shell=/bin/bash state=present force=yes password=$6$rounds=100000$syCDGeIwX5203s07$l3SQnWiGX6GzCRNEuY1LfPjIoQ94vGEAwdaFjWs70V.ZlxG0eHD6C.u3xUDU679ak6hCT5hc1AANfmtsbaN85.
+
+- name: mapred user copy .bash_profile
+  template: src=bash_profile dest=/home/mapred/.bash_profile owner=mapred
+  
+- name: delete symlink hadoop
+  shell: rm -rf /usr/local/hadoop
+  
+- name: Copy Hadoop archive
+  copy: src=../../../packages/hadoop-{{ hadoop_version }}.tar.gz dest=/opt/hadoop-{{ hadoop_version }}.tar.gz
+  
+- name: Extract archive
+  command: chdir=/usr/local /bin/tar xvf /opt/hadoop-{{ hadoop_version }}.tar.gz -C /opt/ creates=/opt/hadoop-{{ hadoop_version }}
+
+- name: Symlink install directory
+  file: src=/opt/hadoop-{{ hadoop_version }} path=/usr/local/hadoop state=link
+  
+- name: Remove Hadoop archive
+  command: rm -f /opt/hadoop-{{ hadoop_version }}.tar.gz
+  
+- name: Copy slaves file
+  template: src=../../../../conf/slaves dest=/usr/local/hadoop/etc/hadoop/slaves
+
+- name: Create the log directory
+  command: mkdir /usr/local/hadoop/logs creates=/usr/local/hadoop/logs
+
+- name: Change ownership of Hadoop installation
+  file: path=/usr/local/hadoop/ owner=hadoop group=hadoop state=directory mode="u=rwx,g=rwx,o=rx" recurse=yes
+  
+  
+
+  

@@ -1,0 +1,9 @@
+- name: create the yarn data dir
+  command: mkdir -p /data/yarn/nm creates=/data/yarn/nm
+
+- name: change dirs ownership
+  command: chown -R yarn:hadoop  /data/yarn/ 
+  
+  
+
+  

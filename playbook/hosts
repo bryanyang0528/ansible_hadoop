@@ -1,0 +1,27 @@
+[all]
+snowwhite	ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+doc			ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+grumpy		ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+happy		ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+sleepy		ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+
+[master]
+snowwhite	ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+
+[slaves]
+doc			ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+grumpy		ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+happy		ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+sleepy		ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+
+[slave1]
+doc			ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+
+[slave2]
+grumpy		ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+
+[slave3]
+happy		ansible_ssh_user=firefly	ansible_ssh_pass=firefly
+
+[slave4]
+sleepy		ansible_ssh_user=firefly	ansible_ssh_pass=firefly

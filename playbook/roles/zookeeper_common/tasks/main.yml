@@ -1,0 +1,30 @@
+- name: add group "zookeeper"
+  group: name=zookeeper state=present
+
+- name: add user "zookeeper"
+  user: name=zookeeper group=zookeeper home=/home/zookeeper shell=/bin/bash state=present force=yes generate_ssh_key=yes ssh_key_type=dsa ssh_key_bits=1024 remove=yes password=$6$rounds=100000$S3WbVOwOwfaX2MCu$Rbg4nWZUd1dgksS/HCQ9MQZKPJGx3SNzjyoV0Cd6hZSiuf4lZxxlKg35yQ0IqH70JXSVHYqB/QcPspMA8QzZ9.
+
+- name: zookeeper user copy .bash_profile
+  template: src=bash_profile dest=/home/zookeeper/.bash_profile owner=zookeeper group=zookeeper
+
+- name: delete symlink zookeeper
+  shell: rm -rf /usr/local/zookeeper
+  
+- name: Copy Zookeeper archive
+  copy: src=../../../packages/zookeeper-{{ zookeeper_version }}.tar.gz dest=/opt/zookeeper-{{ zookeeper_version }}.tar.gz
+  
+- name: Extract archive
+  command: chdir=/usr/local /bin/tar xvf /opt/zookeeper-{{ zookeeper_version }}.tar.gz -C /opt/ creates=/opt/zookeeper-{{ zookeeper_version }}
+
+- name: Symlink install directory
+  file: src=/opt/zookeeper-{{ zookeeper_version }} path=/usr/local/zookeeper state=link
+  
+- name: Remove Zookeeper archive
+  command: rm -f /opt/zookeeper-{{ zookeeper_version }}.tar.gz
+  
+- name: Change ownership of Zookeeper installation
+  file: path=/usr/local/zookeeper/ owner=zookeeper group=zookeeper state=directory mode="u=rwx,g-rwx,o-rx" recurse=yes
+  
+  
+
+  

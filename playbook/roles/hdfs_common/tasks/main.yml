@@ -1,0 +1,17 @@
+- name: Copy core-site.xml file
+  template: src=../../../../conf/core-site.xml dest=/usr/local/hadoop/etc/hadoop/core-site.xml
+
+- name: Copy hadoop-env.sh file
+  template: src=../../../../conf/hadoop-env.sh dest=/usr/local/hadoop/etc/hadoop/hadoop-env.sh
+
+- name: Copy hadoop-metrics2.properties file
+  template: src=../../../../conf/hadoop-metrics2.properties dest=/usr/local/hadoop/etc/hadoop/hadoop-metrics2.properties
+
+- name: Copy hdfs-site.xml file
+  template: src=../../../../conf/hdfs-site.xml dest=/usr/local/hadoop/etc/hadoop/hdfs-site.xml  
+  
+  
+  
+  
+
+  

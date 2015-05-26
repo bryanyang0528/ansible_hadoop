@@ -1,0 +1,5 @@
+---
+- hosts: master
+  tasks:
+  - name: Stop zookeeper
+    shell: su - zookeeper -c '/usr/local/zookeeper/bin/zkServer.sh stop'

@@ -1,0 +1,20 @@
+---
+- hosts: all
+  tasks:
+  - name: Remove hadoop
+    shell: rm -rf /opt/hadoop*
+  - shell: rm -f  /usr/local/hadoop
+  - shell: rm -rf /data/hdfs
+  - shell: rm -rf /home/hadoop /home/hdfs /home/yarn /home/mapred
+  - shell: userdel hdfs
+  - shell: userdel yarn
+  - shell: userdel mapred
+  - shell: userdel hadoop
+
+- hosts: master
+  tasks:
+  - name: Remove hadoop
+    shell: userdel zookeeper
+  - shell: rm -rf /home/zookeeper
+  - shell: rm -rf /opt/zookeeper*
+  - shell: rm -f  /usr/local/zookeeper

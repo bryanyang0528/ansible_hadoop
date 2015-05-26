@@ -1,0 +1,17 @@
+- name: create the nn dir
+  command: mkdir -p /data/hdfs/name creates=/data/hdfs/name
+
+- name: create the sn dir
+  command: mkdir -p /data/hdfs/namesecondary creates=/data/hdfs/namesecondary
+  
+- name: change dirs ownership
+  command: chown -R hdfs:hadoop /data/hdfs 
+  
+- name: format the hdfs filesystem
+  command: su - hdfs -c '/usr/local/hadoop/bin/hdfs namenode -format' creates=/data/hdfs/name/current  
+  
+  
+  
+  
+
+  

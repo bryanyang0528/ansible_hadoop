@@ -1,0 +1,6 @@
+- name: Copy zoo.cfg file
+  template: src=../../../../conf/zoo.cfg dest=/usr/local/zookeeper/conf/zoo.cfg owner=zookeeper group=zookeeper mode="u=rwx,g-rwx,o-rx"
+  
+  
+
+  
