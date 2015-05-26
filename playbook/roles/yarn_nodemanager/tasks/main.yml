@@ -1,8 +1,8 @@
 - name: create the yarn data dir
-  command: mkdir -p /data/yarn/nm creates=/data/yarn/nm
+  command: mkdir -p {{ yarn_nodemanager_local_dirs }} creates={{ yarn_nodemanager_local_dirs }}
 
 - name: change dirs ownership
-  command: chown -R yarn:hadoop  /data/yarn/ 
+  command: chown -R yarn:hadoop {{ yarn_nodemanager_local_dirs }}/..
   
   
 

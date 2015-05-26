@@ -1,2 +1,18 @@
 hadoop_version: 2.6.0-cdh5.4.2
-ssh_master: snowwhite
+master: snowwhite
+
+# HDFS Variables
+dfs_namenode_name_dir: /data/hdfs/name
+dfs_datanode_data_dir: /data/hdfs/data
+dfs_namenode_checkpoint_dir: /data/hdfs/namesecondary
+dfs_datanode_scan_period_hours: 24
+
+# Yarn Variables
+
+yarn_resourcemanager_hostname: snowwhite
+yarn_nodemanager_local_dirs: /data/yarn/nm
+
+yarn_nodemanager_resource_cpu_vcores:    4
+yarn_nodemanager_resource_memory_mb:  2048
+yarn_scheduler_minimum_allocation_mb:  256
+yarn_scheduler_maximum_allocation_mb: 2048

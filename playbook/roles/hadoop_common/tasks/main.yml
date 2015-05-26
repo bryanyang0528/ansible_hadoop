@@ -16,7 +16,7 @@
 - name: copy authorized_keys to the hdfs user
   authorized_key: user=hdfs key="{{ item }}" state=present exclusive=yes manage_dir=yes
   with_lines:
-           - cat /tmp/{{ ssh_master }}-hdfs_authorized_keys
+           - cat /tmp/{{ master }}-hdfs_authorized_keys
 
 - name: add user "yarn"
   user: name=yarn group=hadoop home=/home/yarn shell=/bin/bash state=present force=yes generate_ssh_key=yes ssh_key_type=dsa ssh_key_bits=1024 remove=yes password=$6$rounds=100000$4NCHLDr84LgvJ2CG$ECVUTnfYQ3Td.gc76ZSRxSN8RVl75vIMgCdtvEPXcQbQy3so39MkQPqGUNqHx0glktTMLhW0Te48K4DHvlMNS. 
@@ -30,7 +30,7 @@
 - name: copy authorized_keys to the yarn user
   authorized_key: user=yarn key="{{ item }}" state=present exclusive=yes manage_dir=yes
   with_lines:
-           - cat /tmp/{{ ssh_master }}-yarn_authorized_keys
+           - cat /tmp/{{ master }}-yarn_authorized_keys
 
 - name: add user "mapred"
   user: name=mapred group=hadoop home=/home/mapred shell=/bin/bash state=present force=yes password=$6$rounds=100000$syCDGeIwX5203s07$l3SQnWiGX6GzCRNEuY1LfPjIoQ94vGEAwdaFjWs70V.ZlxG0eHD6C.u3xUDU679ak6hCT5hc1AANfmtsbaN85.

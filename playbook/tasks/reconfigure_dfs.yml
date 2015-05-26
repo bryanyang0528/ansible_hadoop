@@ -2,6 +2,7 @@
 - hosts: all
   tasks:
   - name: Reconfigure hdfs
-    template: src=../conf/core-site.xml dest=/usr/local/hadoop/etc/hadoop/core-site.xml
-  - template: src=../conf/hadoop-env.sh dest=/usr/local/hadoop/etc/hadoop/hadoop-env.sh
-  - template: src=../conf/hdfs-site.xml dest=/usr/local/hadoop/etc/hadoop/hdfs-site.xml
+    template: src=../../conf/core-site.xml dest=/usr/local/hadoop/etc/hadoop/core-site.xml
+  - template: src=../../conf/hadoop-env.sh dest=/usr/local/hadoop/etc/hadoop/hadoop-env.sh
+  - template: src=../../conf/hdfs-site.xml dest=/usr/local/hadoop/etc/hadoop/hdfs-site.xml
+  - template: src=../../conf/hadoop-metrics2.properties dest=/usr/local/hadoop/etc/hadoop/hadoop-metrics2.properties

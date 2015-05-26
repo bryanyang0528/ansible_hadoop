@@ -1,4 +1,3 @@
-grumpy
-sleepy
-doc
-happy
+{% for item in groups['slaves'] %}
+{{ item }}
+{% endfor %}

@@ -17,135 +17,135 @@
 <!-- Put site-specific property overrides in this file. -->
 <configuration>
     <property>
-      <name>mapreduce.job.split.metainfo.maxsize</name>
-      <value>10000000</value>
+        <name>mapreduce.job.split.metainfo.maxsize</name>
+        <value>10000000</value>
     </property>
     <property>
-      <name>mapreduce.job.counters.max</name>
-      <value>120</value>
+        <name>mapreduce.job.counters.max</name>
+        <value>120</value>
     </property>
     <property>
-      <name>mapreduce.output.fileoutputformat.compress</name>
-      <value>false</value>
+        <name>mapreduce.output.fileoutputformat.compress</name>
+        <value>false</value>
     </property>
     <property>
-      <name>mapreduce.output.fileoutputformat.compress.type</name>
-      <value>BLOCK</value>
+        <name>mapreduce.output.fileoutputformat.compress.type</name>
+        <value>BLOCK</value>
     </property>
     <property>
-      <name>mapreduce.output.fileoutputformat.compress.codec</name>
-      <value>org.apache.hadoop.io.compress.DefaultCodec</value>
+        <name>mapreduce.output.fileoutputformat.compress.codec</name>
+        <value>org.apache.hadoop.io.compress.DefaultCodec</value>
     </property>
     <property>
-      <name>mapreduce.map.output.compress.codec</name>
-      <value>org.apache.hadoop.io.compress.DefaultCodec</value>
+        <name>mapreduce.map.output.compress.codec</name>
+        <value>org.apache.hadoop.io.compress.DefaultCodec</value>
     </property>
     <property>
-      <name>mapreduce.map.output.compress</name>
-      <value>true</value>
+        <name>mapreduce.map.output.compress</name>
+        <value>true</value>
     </property>
     <property>
-      <name>zlib.compress.level</name>
-      <value>DEFAULT_COMPRESSION</value>
+        <name>zlib.compress.level</name>
+        <value>DEFAULT_COMPRESSION</value>
     </property>
     <property>
-      <name>mapreduce.task.io.sort.factor</name>
-      <value>64</value>
+        <name>mapreduce.task.io.sort.factor</name>
+        <value>64</value>
     </property>
     <property>
-      <name>mapreduce.map.sort.spill.percent</name>
-      <value>0.8</value>
+        <name>mapreduce.map.sort.spill.percent</name>
+        <value>0.8</value>
     </property>
     <property>
-      <name>mapreduce.reduce.shuffle.parallelcopies</name>
-      <value>10</value>
+        <name>mapreduce.reduce.shuffle.parallelcopies</name>
+        <value>10</value>
     </property>
     <property>
-      <name>mapreduce.task.timeout</name>
-      <value>600000</value>
+        <name>mapreduce.task.timeout</name>
+        <value>600000</value>
     </property>
     <property>
-      <name>mapreduce.client.submit.file.replication</name>
-      <value>1</value>
+        <name>mapreduce.client.submit.file.replication</name>
+        <value>1</value>
     </property>
     <property>
-      <name>mapreduce.job.reduces</name>
-      <value>4</value>
+        <name>mapreduce.job.reduces</name>
+        <value>4</value>
     </property>
     <property>
-      <name>mapreduce.task.io.sort.mb</name>
-      <value>1024</value>
+        <name>mapreduce.task.io.sort.mb</name>
+        <value>1024</value>
     </property>
     <property>
-      <name>mapreduce.map.speculative</name>
-      <value>false</value>
+        <name>mapreduce.map.speculative</name>
+        <value>false</value>
     </property>
     <property>
-      <name>mapreduce.reduce.speculative</name>
-      <value>false</value>
+        <name>mapreduce.reduce.speculative</name>
+        <value>false</value>
     </property>
     <property>
-      <name>mapreduce.job.reduce.slowstart.completedmaps</name>
-      <value>0.8</value>
+        <name>mapreduce.job.reduce.slowstart.completedmaps</name>
+        <value>0.8</value>
     </property>
     <property>
-      <name>mapreduce.jobhistory.address</name>
-      <value>snowwhite:10020</value>
+        <name>mapreduce.jobhistory.address</name>
+        <value>snowwhite:10020</value>
     </property>
     <property>
-      <name>mapreduce.jobhistory.webapp.address</name>
-      <value>snowwhite:19888</value>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>snowwhite:19888</value>
     </property>
     <property>
-      <name>mapreduce.jobhistory.webapp.https.address</name>
-      <value>snowwhite:19890</value>
+        <name>mapreduce.jobhistory.webapp.https.address</name>
+        <value>snowwhite:19890</value>
     </property>
     <property>
-      <name>mapreduce.jobhistory.admin.address</name>
-      <value>snowwhite:10033</value>
+        <name>mapreduce.jobhistory.admin.address</name>
+        <value>snowwhite:10033</value>
     </property>
     <property>
-      <name>mapreduce.framework.name</name>
-      <value>yarn</value>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
     </property>
     <property>
-      <name>yarn.app.mapreduce.am.resource.mb</name>
-      <value>256</value>
+        <name>yarn.app.mapreduce.am.resource.mb</name>
+        <value>256</value>
     </property>
     <property>
-      <name>yarn.app.mapreduce.am.resource.cpu-vcores</name>
-      <value>1</value>
+        <name>yarn.app.mapreduce.am.resource.cpu-vcores</name>
+        <value>1</value>
     </property>
     <property>
-      <name>mapreduce.job.ubertask.enable</name>
-      <value>false</value>
+        <name>mapreduce.job.ubertask.enable</name>
+        <value>false</value>
     </property>
     <property>
-      <name>mapreduce.map.java.opts.max.heap</name>
-      <value>109</value>
+        <name>mapreduce.map.java.opts.max.heap</name>
+        <value>109</value>
     </property>
     <property>
-      <name>mapreduce.reduce.java.opts.max.heap</name>
-      <value>218</value>
+        <name>mapreduce.reduce.java.opts.max.heap</name>
+        <value>218</value>
     </property>
     <property>
-      <name>mapreduce.map.cpu.vcores</name>
-      <value>1</value>
+        <name>mapreduce.map.cpu.vcores</name>
+        <value>1</value>
     </property>
     <property>
-      <name>mapreduce.map.memory.mb</name>
-      <value>128</value>
+        <name>mapreduce.map.memory.mb</name>
+        <value>128</value>
     </property>
     <property>
-      <name>mapreduce.reduce.memory.mb</name>
-      <value>256</value>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>256</value>
     </property>
     <property>
-      <name>mapreduce.reduce.cpu.vcores</name>
-      <value>1</value>
+        <name>mapreduce.reduce.cpu.vcores</name>
+        <value>1</value>
     </property>
     <property>
-      <name>mapreduce.shuffle.max.connections</name>
-      <value>80</value>
+        <name>mapreduce.shuffle.max.connections</name>
+        <value>80</value>
     </property>
 </configuration>

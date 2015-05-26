@@ -1,14 +1,14 @@
 - name: create the nn dir
-  command: mkdir -p /data/hdfs/name creates=/data/hdfs/name
+  command: mkdir -p {{ dfs_namenode_name_dir }} creates={{ dfs_namenode_name_dir }}}
 
 - name: create the sn dir
-  command: mkdir -p /data/hdfs/namesecondary creates=/data/hdfs/namesecondary
+  command: mkdir -p {{ dfs_namenode_checkpoint_dir }}} creates={{ dfs_namenode_checkpoint_dir }}}
   
 - name: change dirs ownership
-  command: chown -R hdfs:hadoop /data/hdfs 
+  command: chown -R hdfs:hadoop {{ dfs_namenode_name_dir }}/..
   
 - name: format the hdfs filesystem
-  command: su - hdfs -c '/usr/local/hadoop/bin/hdfs namenode -format' creates=/data/hdfs/name/current  
+  command: su - hdfs -c '/usr/local/hadoop/bin/hdfs namenode -format' creates={{ dfs_namenode_name_dir }}/current
   
   
   

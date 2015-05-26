@@ -17,24 +17,24 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-  <property>
-    <name>dfs.namenode.name.dir</name>
-    <value>/data/hdfs/name</value>
-  </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>{{ dfs_namenode_name_dir }}</value>
+    </property>
 
-  <property>
-    <name>dfs.datanode.data.dir</name>
-    <value>/data/hdfs/data</value>
-  </property>
-  
-  <property>
-    <name>dfs.namenode.checkpoint.dir</name>
-    <value>/data/hdfs/namesecondary</value>
-  </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>{{ dfs_datanode_data_dir }}</value>
+    </property>
 
-  <property>
-    <name>dfs.datanode.scan.period.hours</name>
-    <value>1</value>
-  </property>
+    <property>
+        <name>dfs.namenode.checkpoint.dir</name>
+        <value>{{ dfs_namenode_checkpoint_dir }}</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.scan.period.hours</name>
+        <value>{{ dfs_datanode_scan_period_hours }}</value>
+    </property>
 
 </configuration>
