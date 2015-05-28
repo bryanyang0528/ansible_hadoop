@@ -32,7 +32,7 @@
     </property>
     <property>
         <name>yarn.scheduler.minimum-allocation-mb</name>
-        <value>yarn_scheduler_minimum_allocation_mb</value>
+        <value>{{ yarn_scheduler_minimum_allocation_mb }}</value>
     </property>
     <property>
         <name>yarn.scheduler.maximum-allocation-mb</name>
