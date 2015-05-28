@@ -21,7 +21,7 @@ export HADOOP_YARN_USER=${HADOOP_YARN_USER:-yarn}
 export YARN_CONF_DIR="${YARN_CONF_DIR:-$HADOOP_YARN_HOME/conf}"
 
 # some Java parameters
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME={{ JAVA_HOME }}
 if [ "$JAVA_HOME" != "" ]; then
   #echo "run java in $JAVA_HOME"
   JAVA_HOME=$JAVA_HOME
@@ -53,7 +53,7 @@ fi
 # and/or YARN_RESOURCEMANAGER_OPTS.
 # If not specified, the default value will be picked from either YARN_HEAPMAX
 # or JAVA_HEAP_MAX with YARN_HEAPMAX as the preferred option of the two.
-#export YARN_RESOURCEMANAGER_HEAPSIZE=1000
+export YARN_RESOURCEMANAGER_HEAPSIZE=512
 
 # Specify the max Heapsize for the timeline server using a numerical value
 # in the scale of MB. For example, to specify an jvm option of -Xmx1000m, set
@@ -78,7 +78,7 @@ fi
 # and/or YARN_NODEMANAGER_OPTS.
 # If not specified, the default value will be picked from either YARN_HEAPMAX
 # or JAVA_HEAP_MAX with YARN_HEAPMAX as the preferred option of the two.
-#export YARN_NODEMANAGER_HEAPSIZE=1000
+export YARN_NODEMANAGER_HEAPSIZE=512
 
 # Specify the JVM options to be used when starting the NodeManager.
 # These options will be appended to the options specified as YARN_OPTS
