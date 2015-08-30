@@ -1,4 +1,4 @@
-hadoop_version: 2.6.0-cdh5.4.3
+hadoop_version: 2.6.0-cdh5.4.5
 master: snowwhite
 
 JAVA_HOME: /usr/lib/jvm/java-8-oracle
