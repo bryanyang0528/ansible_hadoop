@@ -1,0 +1,17 @@
+- name: delete symlink hive
+  shell: rm -rf /usr/local/hive
+  
+- name: Copy Hive archive
+  copy: src=../../../packages/hive-{{ hive_version }}.tar.gz dest=/opt/hive-{{ hive_version }}.tar.gz
+  
+- name: Extract archive
+  command: chdir=/usr/local /bin/tar xvf /opt/hive-{{ hive_version }}.tar.gz -C /opt/ creates=/opt/hive-{{ hive_version }}
+
+- name: Symlink install directory
+  file: src=/opt/hive-{{ hive_version }} path=/usr/local/hive state=link
+  
+- name: Remove Hive archive
+  command: rm -f /opt/hive-{{ hive_version }}.tar.gz
+
+- name: Change ownership of Hive installation
+  file: path=/usr/local/hive/ owner=hive group=hadoop state=directory mode="u=rwx,g=rwx,o=rx" recurse=yes

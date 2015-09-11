@@ -1,6 +1,6 @@
 - hosts: all
   roles:
-  - hadoop_common 
+  - hadoop_common
   
 - hosts: all
   roles:
@@ -23,16 +23,6 @@
   - yarn_nodemanager
 
 - hosts: master
-  tasks:
-  - name: Configure hdfs dirs
-    shell: su - hdfs -c '/usr/local/hadoop/sbin/start-dfs.sh'
-  - shell: su - hdfs -c 'hdfs dfs -mkdir /tmp'
-  - shell: su - hdfs -c 'hdfs dfs -chmod -R ugo+rwx /tmp'
-  - shell: su - hdfs -c 'hdfs dfs -mkdir /tmp/hadoop-yarn'
-  - shell: su - hdfs -c 'hdfs dfs -chmod -R ugo+rwx /tmp/hadoop-yarn'
-  - shell: su - hdfs -c '/usr/local/hadoop/sbin/stop-dfs.sh'
-
-- hosts: master
   roles:
   - zookeeper_common
 
@@ -43,3 +33,20 @@
 - hosts: slaves
   roles:
   - spark_common
+
+- hosts: master
+  roles:
+  - hive
+
+- hosts: master
+  tasks:
+  - name: Configure hdfs dirs
+    shell: su - hdfs -c '/usr/local/hadoop/sbin/start-dfs.sh'
+  - shell: su - hdfs -c 'hdfs dfs -mkdir /tmp'
+  - shell: su - hdfs -c 'hdfs dfs -chmod -R ugo+rwx /tmp'
+  - shell: su - hdfs -c 'hdfs dfs -mkdir /tmp/hadoop-yarn'
+  - shell: su - hdfs -c 'hdfs dfs -chmod -R ugo+rwx /tmp/hadoop-yarn'
+  - shell: su - hdfs -c 'hdfs dfs -mkdir -p /user/hive/warehouse'
+  - shell: su - hdfs -c 'hdfs dfs -chown -R hive:hadoop /user/hive'
+  - shell: su - hdfs -c 'hdfs dfs -chmod g+w /user/hive/warehouse'
+  - shell: su - hdfs -c '/usr/local/hadoop/sbin/stop-dfs.sh'

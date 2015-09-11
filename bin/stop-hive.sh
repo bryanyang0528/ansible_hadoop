@@ -7,7 +7,4 @@ pushd . > /dev/null
 cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
-$SCRIPT_PATH/stop-hive.sh
-$SCRIPT_PATH/stop-yarn.sh
-$SCRIPT_PATH/stop-dfs.sh
-$SCRIPT_PATH/stop-zk.sh
+ansible-playbook --sudo -i $SCRIPT_PATH/../playbook/hosts $SCRIPT_PATH/../playbook/tasks/stop_hive.yml

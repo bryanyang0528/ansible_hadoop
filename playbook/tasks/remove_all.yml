@@ -5,10 +5,11 @@
     shell: rm -rf /opt/hadoop*
   - shell: rm -f  /usr/local/hadoop
   - shell: rm -rf /data/hdfs
-  - shell: rm -rf /home/hadoop /home/hdfs /home/yarn /home/mapred
+  - shell: rm -rf /home/hadoop /home/hdfs /home/yarn /home/mapred /home/hive
   - shell: userdel hdfs
   - shell: userdel yarn
   - shell: userdel mapred
+  - shell: userdel hive
   - shell: userdel hadoop
 
 - hosts: master
@@ -18,3 +19,5 @@
   - shell: rm -rf /home/zookeeper
   - shell: rm -rf /opt/zookeeper*
   - shell: rm -f  /usr/local/zookeeper
+  - shell: rm -rf /opt/hive*
+  - shell: rm -rf /usr/local/hive

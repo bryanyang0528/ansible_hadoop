@@ -1,0 +1,5 @@
+---
+- hosts: master
+  tasks:
+  - name: Stop hive
+    shell: su - hive -c "kill -9 `ps -uhive | grep java | awk '{print $1}'`"

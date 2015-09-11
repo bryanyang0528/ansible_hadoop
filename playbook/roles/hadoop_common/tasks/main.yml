@@ -32,6 +32,20 @@
   with_lines:
            - cat /tmp/{{ master }}-yarn_authorized_keys
 
+- name: add user "hive"
+  user: name=hive group=hadoop home=/home/hive shell=/bin/bash state=present force=yes generate_ssh_key=yes ssh_key_type=dsa ssh_key_bits=1024 remove=yes password=$6$rounds=656000$bmbDDBPfcq0tVu5C$qHYSfGUvoB4IxkPRhCl1zKDYkT3GQd.dBMoLfTrLphCZLUYxh/GmpEA81VjyBiMfoAP3oDZv7lbstH3B5CQOy.
+
+- name: hive user copy .bash_profile
+  template: src=bash_profile dest=/home/hive/.bash_profile owner=yarn group=hadoop
+
+- name: fetch the hive user pub key
+  fetch: dest=/tmp/{{ ansible_hostname }}-hive_authorized_keys src=/home/hive/.ssh/id_dsa.pub flat=yes
+
+- name: copy authorized_keys to the hive user
+  authorized_key: user=hive key="{{ item }}" state=present exclusive=yes manage_dir=yes
+  with_lines:
+           - cat /tmp/{{ master }}-hive_authorized_keys
+
 - name: add user "mapred"
   user: name=mapred group=hadoop home=/home/mapred shell=/bin/bash state=present force=yes password=$6$rounds=100000$syCDGeIwX5203s07$l3SQnWiGX6GzCRNEuY1LfPjIoQ94vGEAwdaFjWs70V.ZlxG0eHD6C.u3xUDU679ak6hCT5hc1AANfmtsbaN85.
 
