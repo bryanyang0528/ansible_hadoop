@@ -18,15 +18,8 @@
 
 <configuration>
     <property>
-        <name>fs.defaultFS</name>
-        <value>hdfs://{{ master }}</value>
-    </property>
-    <property>
-        <name>hadoop.proxyuser.hive.hosts</name>
-        <value>*</value>
-    </property>
-    <property>
-        <name>hadoop.proxyuser.hive.groups</name>
-        <value>*</value>
+        <name>hive.server2.enable.impersonation</name>
+        <description>Enable user impersonation for HiveServer2</description>
+        <value>true</value>
     </property>
 </configuration>

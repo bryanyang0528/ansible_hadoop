@@ -15,3 +15,6 @@
 
 - name: Change ownership of Hive installation
   file: path=/usr/local/hive/ owner=hive group=hadoop state=directory mode="u=rwx,g=rwx,o=rx" recurse=yes
+
+- name: Copy hive-site.xml file
+  template: src=../../../../conf/hive-site.xml dest=/usr/local/hive/conf/hive-site.xml
