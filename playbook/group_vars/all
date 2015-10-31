@@ -3,6 +3,9 @@ master: snowwhite
 
 JAVA_HOME: /usr/lib/jvm/java-8-oracle
 
+# Kerberos Realm
+kerberos_realm: FAIRYTALES
+
 # HDFS Variables
 dfs_namenode_name_dir: /data/hdfs/name
 dfs_datanode_data_dir: /data/hdfs/data
@@ -10,7 +13,6 @@ dfs_namenode_checkpoint_dir: /data/hdfs/namesecondary
 dfs_datanode_scan_period_hours: 24
 
 # Yarn Variables
-
 yarn_resourcemanager_hostname: snowwhite
 yarn_nodemanager_local_dirs: /data/yarn/nm
 yarn_nodemanager_resource_cpu_vcores: 4
@@ -22,6 +24,7 @@ yarn_scheduler_minimum_allocation_mb: 1024
 yarn_scheduler_maximum_allocation_mb: 2048
 yarn_scheduler_increment_allocation_mb: 256
 
+# Map/Reduce Variables
 mapreduce_map_memory_mb: 2048
 mapreduce_map_java_opts_max_heap: 1024
 mapreduce_map_cpu_vcores: 1

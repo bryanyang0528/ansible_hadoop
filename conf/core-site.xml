@@ -29,4 +29,11 @@
         <name>hadoop.proxyuser.hive.groups</name>
         <value>*</value>
     </property>
+
+    <!-- Kerberos Settings -->
+    <property>
+        <name>hadoop.security.authentication</name>
+        <value>simple</value>
+    </property>
+    <!-- End Kerberos Settings -->
 </configuration>
