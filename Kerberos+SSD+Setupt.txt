@@ -1,0 +1,19 @@
+Kerberos Set Up
+
+#master
+apt-get -q -y --force-yes install krb5-kdc krb5-admin-server krb5-user libpam-krb5 libpam-ccreds auth-client-config
+
+#slave
+apt-get -q -y --force-yes install krb5-user libpam-krb5 libpam-ccreds auth-client-config
+
+
+SSSD Set Up
+
+#master & slaves
+delgroup dialout
+apt-get install sssd libpam-sss libnss-sss libnss-ldap zsh
+
+
+# vi /etc/pam.d/common-session
+# add the following line:
+# session required pam_mkhomedir.so umask=0022 skel=/etc/skel
