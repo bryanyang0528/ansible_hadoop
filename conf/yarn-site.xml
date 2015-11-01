@@ -107,6 +107,10 @@
         <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
         <value>org.apache.hadoop.mapred.ShuffleHandler</value>
     </property>
+    <property>
+        <name>yarn.nodemanager.delete.debug-delay-sec</name>
+        <name>600</name>
+    </property>
 
     <!-- Kerberos Settings -->
     <property>
@@ -148,9 +152,13 @@
         <value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>
     </property>
     <property>
-        <name>yarn.nodemanager.linux-container-executor.group</name>
-        <value>yarn</value>
+        <name>yarn.nodemanager.linux-container-executor.nonsecure-mode.limit-users</name>
+        <value>false</value>
     </property>
     -->
+    <property>
+        <name>yarn.nodemanager.linux-container-executor.group</name>
+        <value>hadoop</value>
+    </property>
     <!-- End Kerberos Settings -->
 </configuration>

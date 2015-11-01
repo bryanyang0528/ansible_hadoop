@@ -3,6 +3,9 @@ master: snowwhite
 
 JAVA_HOME: /usr/lib/jvm/java-8-oracle
 
+# Architecture
+arch: arm
+
 # Kerberos Realm
 kerberos_realm: FAIRYTALES
 
@@ -14,7 +17,7 @@ dfs_datanode_scan_period_hours: 24
 
 # Yarn Variables
 yarn_resourcemanager_hostname: snowwhite
-yarn_nodemanager_local_dirs: /data/yarn/nm
+yarn_nodemanager_local_dirs: /yarn/nm
 yarn_nodemanager_resource_cpu_vcores: 4
 yarn_nodemanager_resource_memory_mb: 2048
 yarn_scheduler_minimum_allocation_vcores: 1

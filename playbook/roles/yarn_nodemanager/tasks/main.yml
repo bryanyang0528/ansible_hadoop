@@ -3,6 +3,13 @@
 
 - name: change dirs ownership
   command: chown -R yarn:hadoop {{ yarn_nodemanager_local_dirs }}/..
+
+- name: Copy container-executor.cfg file
+  copy: src=../../../../conf/container-executor.cfg dest=/usr/local/hadoop/etc/hadoop/container-executor.cfg owner=root mode=u+rw,go-rwx
+
+- name: Copy container-executor file
+  copy: src=../../../../conf/container-executor-{{ arch }} dest=/usr/local/hadoop/bin/container-executor owner=root group=hadoop mode=ugo+srx,g+rx,o-rwx
+
   
   
 

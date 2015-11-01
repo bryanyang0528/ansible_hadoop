@@ -70,12 +70,14 @@
 - name: Copy slaves file
   template: src=../../../../conf/slaves dest=/usr/local/hadoop/etc/hadoop/slaves
 
+- name: Change ownership of Hadoop installation
+  file: path=/usr/local/hadoop/ owner=root group=hadoop state=directory mode=u+rwx,g+rx,o-rwx recurse=yes
+
 - name: Create the log directory
   command: mkdir /usr/local/hadoop/logs creates=/usr/local/hadoop/logs
 
-- name: Change ownership of Hadoop installation
-  file: path=/usr/local/hadoop/ owner=hadoop group=hadoop state=directory mode="u=rwx,g=rwx,o=rx" recurse=yes
-  
-  
+- name: Change ownership and rights of the log directory
+  file: path=/usr/local/hadoop/logs owner=root group=hadoop state=directory mode=u+rw,g+rw,o-rw recurse=yes
+
 
   
