@@ -123,11 +123,11 @@
     </property>
     <property>
         <name>yarn.resourcemanager.keytab</name>
-        <value>yarn.keytab</value>
+        <value>/usr/local/hadoop/etc/hadoop/yarn.keytab</value>
     </property>
     <property>
         <name>yarn.resourcemanager.webapp.spnego-keytab-file</name>
-        <value>yarn.keytab</value>
+        <value>/usr/local/hadoop/etc/hadoop/yarn.keytab</value>
     </property>
 
     <property>
@@ -140,22 +140,16 @@
     </property>
     <property>
         <name>yarn.nodemanager.keytab</name>
-        <value>yarn.keytab</value>
+        <value>/usr/local/hadoop/etc/hadoop/yarn.keytab</value>
     </property>
     <property>
         <name>yarn.nodemanager.webapp.spnego-keytab-file</name>
-        <value>yarn.keytab</value>
+        <value>/usr/local/hadoop/etc/hadoop/yarn.keytab</value>
     </property>
-    <!--
     <property>
         <name>yarn.nodemanager.container-executor.class</name>
         <value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>
     </property>
-    <property>
-        <name>yarn.nodemanager.linux-container-executor.nonsecure-mode.limit-users</name>
-        <value>false</value>
-    </property>
-    -->
     <property>
         <name>yarn.nodemanager.linux-container-executor.group</name>
         <value>hadoop</value>
