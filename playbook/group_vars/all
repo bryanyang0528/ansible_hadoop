@@ -3,9 +3,6 @@ master: snowwhite
 
 JAVA_HOME: /usr/lib/jvm/java-8-oracle
 
-# Kerberos Realm
-kerberos_realm: FAIRYTALES
-
 # HDFS Variables
 dfs_namenode_name_dir: /data/hdfs/name
 dfs_datanode_data_dir: /data/hdfs/data
