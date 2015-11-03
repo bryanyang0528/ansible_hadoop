@@ -12,11 +12,6 @@
   - template: src=../../conf/mapred-site.xml dest=/usr/local/hadoop/etc/hadoop/mapred-site.xml
   - template: src=../../conf/yarn-site.xml dest=/usr/local/hadoop/etc/hadoop/yarn-site.xml
 
-- hosts: slaves
-  tasks:
-  - name: Reconfigure Linux Container Executor
-    copy: src=../../conf/container-executor.cfg dest=/usr/local/hadoop/etc/hadoop/container-executor.cfg owner=root mode=u+rw,go-rwx
-
 - hosts: master
   tasks:
   - name: Start yarn
