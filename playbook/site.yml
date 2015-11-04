@@ -54,3 +54,9 @@
 - hosts: master
   roles:
   - { role: kerberos, when: secure }
+
+- hosts: all
+  tasks:
+  - name: Switch simple to kerberos
+    command: sed -i -e "s/simple/kerberos/g" /usr/local/hadoop/etc/hadoop/core-site.xml
+    when: secure
