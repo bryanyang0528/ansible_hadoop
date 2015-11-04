@@ -24,3 +24,22 @@
   - shell: rm -f  /usr/local/zookeeper
   - shell: rm -rf /opt/hive*
   - shell: rm -rf /usr/local/hive
+
+- hosts: master
+  name: for each node remove all the generated keytabs
+  tasks:
+  - shell: kadmin.local -q "delprinc -force hdfs/{{ item }}.{{dns_domain}}@{{ kerberos_realm }}"
+    with_items: groups.slaves
+    when: secure
+  - shell: kadmin.local -q "delprinc -force yarn/{{ item }}.{{dns_domain}}@{{ kerberos_realm }}"
+    with_items: groups.slaves
+    when: secure
+  - shell: kadmin.local -q "delprinc -force HTTP/{{ item }}.{{dns_domain}}@{{ kerberos_realm }}"
+    with_items: groups.slaves
+    when: secure
+  - shell: kadmin.local -q "delprinc -force hdfs/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"
+    when: secure
+  - shell: kadmin.local -q "delprinc -force yarn/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"
+    when: secure
+  - shell: kadmin.local -q "delprinc -force HTTP/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"
+    when: secure

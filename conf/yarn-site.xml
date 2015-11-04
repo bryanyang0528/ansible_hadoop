@@ -107,4 +107,55 @@
         <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
         <value>org.apache.hadoop.mapred.ShuffleHandler</value>
     </property>
+    <property>
+        <name>yarn.nodemanager.delete.debug-delay-sec</name>
+        <name>600</name>
+    </property>
+
+    {% if secure  %}
+    <!-- Kerberos Settings -->
+    <property>
+        <name>yarn.resourcemanager.principal</name>
+        <value>yarn/_HOST@{{ kerberos_realm }}</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.spnego-principal</name>
+        <value>HTTP/_HOST@{{ kerberos_realm }}</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.keytab</name>
+        <value>/usr/local/hadoop/etc/hadoop/yarn.keytab</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.spnego-keytab-file</name>
+        <value>/usr/local/hadoop/etc/hadoop/yarn.keytab</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.principal</name>
+        <value>yarn/_HOST@{{ kerberos_realm }}</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.webapp.spnego-principal</name>
+        <value>HTTP/_HOST@{{ kerberos_realm }}</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.keytab</name>
+        <value>/usr/local/hadoop/etc/hadoop/yarn.keytab</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.webapp.spnego-keytab-file</name>
+        <value>/usr/local/hadoop/etc/hadoop/yarn.keytab</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.container-executor.class</name>
+        <value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.linux-container-executor.group</name>
+        <value>hadoop</value>
+    </property>
+    <!-- End Kerberos Settings -->
+    {% endif %}
+
 </configuration>

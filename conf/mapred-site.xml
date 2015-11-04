@@ -150,4 +150,26 @@
         <name>mapreduce.shuffle.max.connections</name>
         <value>80</value>
     </property>
+
+    {% if secure  %}
+    <!-- Kerberos Settings -->
+    <property>
+        <name>mapreduce.jobhistory.principal</name>
+        <value>mapred/_HOST@{{ kerberos_realm }}</value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.webapp.spnego-principal</name>
+        <value>HTTP/_HOST@{{ kerberos_realm }}</value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.keytab</name>
+        <value>mapred.keytab</value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.webapp.spnego-keytab-file</name>
+        <value>mapred.keytab</value>
+    </property>
+    <!-- End Kerberos Settings -->
+    {% endif %}
+
 </configuration>

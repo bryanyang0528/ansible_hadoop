@@ -19,7 +19,7 @@
 <configuration>
     <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://{{ master }}</value>
+        <value>hdfs://{{ master }}.{{ dns_domain }}</value>
     </property>
     <property>
         <name>hadoop.proxyuser.hive.hosts</name>
@@ -29,4 +29,28 @@
         <name>hadoop.proxyuser.hive.groups</name>
         <value>*</value>
     </property>
+
+    {% if secure  %}
+    <!-- Kerberos Settings -->
+    <property>
+        <name>hadoop.security.authentication</name>
+        <value>simple</value>
+    </property>
+    <property>
+        <name>hadoop.security.authorization</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hadoop.rpc.protection</name>
+        <value>authentication</value>
+    </property>
+    <property>
+        <name>hadoop.security.auth_to_local</name>
+        <value>RULE:[1:$1@$0](.*@\Q{{ trusted_kerberos_realm }}\E$)s/@\QDGRECO-MBP.LOCAL\E$//
+            RULE:[2:$1@$0](.*@\Q{{ trusted_kerberos_realm }}\E$)s/@\QDGRECO-MBP.LOCAL\E$//
+            DEFAULT</value>
+    </property>
+    <!-- End Kerberos Settings -->
+    {% endif %}
+
 </configuration>
