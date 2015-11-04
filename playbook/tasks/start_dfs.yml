@@ -3,3 +3,4 @@
   tasks:
   - name: Start hdfs
     shell: su - hdfs -c '/usr/local/hadoop/sbin/start-dfs.sh'  
+  - shell: /usr/local/hadoop/sbin/start-secure-dns.sh

@@ -3,3 +3,4 @@
   tasks:
   - name: Stop hdfs
     shell: su - hdfs -c '/usr/local/hadoop/sbin/stop-dfs.sh'
+  - shell: /usr/local/hadoop/sbin/stop-secure-dns.sh

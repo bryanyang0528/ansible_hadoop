@@ -30,10 +30,11 @@
         <value>*</value>
     </property>
 
+    {% if secure  %}
     <!-- Kerberos Settings -->
     <property>
         <name>hadoop.security.authentication</name>
-        <value>kerberos</value>
+        <value>simple</value>
     </property>
     <property>
         <name>hadoop.security.authorization</name>
@@ -45,9 +46,11 @@
     </property>
     <property>
         <name>hadoop.security.auth_to_local</name>
-        <value>RULE:[1:$1@$0](.*@\QDGRECO-MBP.LOCAL\E$)s/@\QDGRECO-MBP.LOCAL\E$//
-            RULE:[2:$1@$0](.*@\QDGRECO-MBP.LOCAL\E$)s/@\QDGRECO-MBP.LOCAL\E$//
+        <value>RULE:[1:$1@$0](.*@\Q{{ trusted_kerberos_realm }}\E$)s/@\QDGRECO-MBP.LOCAL\E$//
+            RULE:[2:$1@$0](.*@\Q{{ trusted_kerberos_realm }}\E$)s/@\QDGRECO-MBP.LOCAL\E$//
             DEFAULT</value>
     </property>
     <!-- End Kerberos Settings -->
+    {% endif %}
+
 </configuration>

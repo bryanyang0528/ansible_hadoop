@@ -151,6 +151,7 @@
         <value>80</value>
     </property>
 
+    {% if secure  %}
     <!-- Kerberos Settings -->
     <property>
         <name>mapreduce.jobhistory.principal</name>
@@ -169,4 +170,6 @@
         <value>mapred.keytab</value>
     </property>
     <!-- End Kerberos Settings -->
+    {% endif %}
+
 </configuration>

@@ -112,6 +112,7 @@
         <name>600</name>
     </property>
 
+    {% if secure  %}
     <!-- Kerberos Settings -->
     <property>
         <name>yarn.resourcemanager.principal</name>
@@ -155,4 +156,6 @@
         <value>hadoop</value>
     </property>
     <!-- End Kerberos Settings -->
+    {% endif %}
+
 </configuration>

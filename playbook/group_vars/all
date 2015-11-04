@@ -6,9 +6,12 @@ JAVA_HOME: /usr/lib/jvm/java-8-oracle
 # Architecture
 arch: arm
 
+secure: true
+
 # Kerberos Realm
 dns_domain: fairytales
 kerberos_realm: FAIRYTALES
+trusted_kerberos_realm: DGRECO-MBP.LOCAL
 kerberos_admin_principal: firefly/admin
 
 # HDFS Variables

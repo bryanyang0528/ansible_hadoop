@@ -37,6 +37,7 @@
         <value>{{ dfs_datanode_scan_period_hours }}</value>
     </property>
 
+    {% if secure  %}
     <!-- Kerberos Settings -->
     <property>
         <name>dfs.block.access.token.enable</name>
@@ -76,7 +77,6 @@
         <name>dfs.web.authentication.kerberos.principal</name>
         <value>HTTP/_HOST@{{ kerberos_realm }}</value>
     </property>
-
     <property>
         <name>dfs.datanode.address</name>
         <value>0.0.0.0:1004</value>
@@ -85,7 +85,6 @@
         <name>dfs.datanode.http.address</name>
         <value>0.0.0.0:1006</value>
     </property>
-
     <property>
         <name>dfs.datanode.keytab.file</name>
         <value>/usr/local/hadoop/etc/hadoop/hdfs.keytab</value>
@@ -95,4 +94,6 @@
         <value>hdfs/_HOST@{{ kerberos_realm }}</value>
     </property>
     <!-- End Kerberos Settings -->
+    {% endif %}
+
 </configuration>
