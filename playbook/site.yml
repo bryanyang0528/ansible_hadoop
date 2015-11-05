@@ -42,9 +42,6 @@
   - shell: su - hdfs -c 'hdfs dfs -chmod -R ugo+rwx /tmp'
   - shell: su - hdfs -c 'hdfs dfs -mkdir /tmp/hadoop-yarn'
   - shell: su - hdfs -c 'hdfs dfs -chmod -R ugo+rwx /tmp/hadoop-yarn'
-  - shell: su - hdfs -c 'hdfs dfs -mkdir -p /user/hive/warehouse'
-  - shell: su - hdfs -c 'hdfs dfs -chown -R hive:hadoop /user/hive'
-  - shell: su - hdfs -c 'hdfs dfs -chmod 1777 /user/hive/warehouse'
   - shell: su - hdfs -c '/usr/local/hadoop/sbin/stop-dfs.sh'
 
 - hosts: master
