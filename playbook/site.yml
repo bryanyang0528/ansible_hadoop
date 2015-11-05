@@ -35,10 +35,6 @@
   - spark_common
 
 - hosts: master
-  roles:
-  - hive
-
-- hosts: master
   tasks:
   - name: Configure hdfs dirs
     shell: su - hdfs -c '/usr/local/hadoop/sbin/start-dfs.sh'

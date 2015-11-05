@@ -37,3 +37,5 @@
 - shell: kadmin.local -q "xst -k /tmp/hdfs.keytab hdfs/{{ master }}.{{dns_domain}}@{{ kerberos_realm }} HTTP/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"; cp /tmp/hdfs.keytab /usr/local/hadoop/etc/hadoop; rm /tmp/hdfs.keytab; chown hdfs:hadoop /usr/local/hadoop/etc/hadoop/hdfs.keytab; chmod o-rwx /usr/local/hadoop/etc/hadoop/hdfs.keytab
 
 - shell: kadmin.local -q "xst -k /tmp/yarn.keytab yarn/{{ master }}.{{dns_domain}}@{{ kerberos_realm }} HTTP/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"; cp /tmp/yarn.keytab /usr/local/hadoop/etc/hadoop; rm /tmp/yarn.keytab; chown yarn:hadoop /usr/local/hadoop/etc/hadoop/yarn.keytab; chmod o-rwx /usr/local/hadoop/etc/hadoop/yarn.keytab
+
+- shell: kadmin.local -q "addprinc -randkey hive/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"

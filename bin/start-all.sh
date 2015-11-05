@@ -11,4 +11,3 @@ ansible -i $SCRIPT_PATH/../playbook/hosts all --sudo -m raw -a "rm -rf /usr/loca
 $SCRIPT_PATH/start-zk.sh
 $SCRIPT_PATH/start-dfs.sh
 $SCRIPT_PATH/start-yarn.sh
-$SCRIPT_PATH/start-hive.sh

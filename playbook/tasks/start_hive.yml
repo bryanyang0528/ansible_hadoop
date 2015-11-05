@@ -1,5 +1,0 @@
----
-- hosts: master
-  tasks:
-  - name: Start hive
-    shell: su - hive -c '(cd /usr/local/hive; nohup bin/hiveserver2 --hiveconf hive.server2.thrift.port=10000 --hiveconf hive.server2.thrift.bind.host=snowwhite &)'  

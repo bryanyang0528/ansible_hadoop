@@ -8,11 +8,10 @@
   - shell: rm -rf {{ dfs_datanode_data_dir }}
   - shell: rm -rf {{ dfs_namenode_checkpoint_dir }}
   - shell: rm -rf {{ yarn_nodemanager_local_dirs }}
-  - shell: rm -rf /home/hadoop /home/hdfs /home/yarn /home/mapred /home/hive
+  - shell: rm -rf /home/hadoop /home/hdfs /home/yarn /home/mapred
   - shell: userdel hdfs
   - shell: userdel yarn
   - shell: userdel mapred
-  - shell: userdel hive
   - shell: userdel hadoop
 
 - hosts: master
@@ -22,8 +21,6 @@
   - shell: rm -rf /home/zookeeper
   - shell: rm -rf /opt/zookeeper*
   - shell: rm -f  /usr/local/zookeeper
-  - shell: rm -rf /opt/hive*
-  - shell: rm -rf /usr/local/hive
 
 - hosts: master
   name: for each node remove all the generated keytabs
