@@ -1,6 +1,10 @@
 - name: Copy zoo.cfg file
   template: src=../../../../conf/zoo.cfg dest=/usr/local/zookeeper/conf/zoo.cfg owner=zookeeper group=zookeeper mode="u=rwx,g-rwx,o-rx"
   
-  
+- name: Copy jaas.conf file
+  template: src=../../../../conf/zookeeper_jaas.conf dest=/usr/local/zookeeper/conf/jaas.conf owner=zookeeper group=zookeeper mode="u=rwx,g-rwx,o-rx"
+  when: secure
 
-  
+- name: Copy java.env file
+  template: src=../../../../conf/zookeeper_java.env dest=/usr/local/zookeeper/conf/java.env owner=zookeeper group=zookeeper mode="u=rwx,g-rwx,o-rx"
+  when: secure

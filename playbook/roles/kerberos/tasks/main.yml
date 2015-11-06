@@ -34,8 +34,14 @@
 
 - shell: kadmin.local -q "addprinc -randkey HTTP/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"
 
+- shell: kadmin.local -q "addprinc -randkey zookeeper/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"
+
+- shell: kadmin.local -q "addprinc -randkey zkcli@{{ kerberos_realm }}"
+
 - shell: kadmin.local -q "xst -k /tmp/hdfs.keytab hdfs/{{ master }}.{{dns_domain}}@{{ kerberos_realm }} HTTP/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"; cp /tmp/hdfs.keytab /usr/local/hadoop/etc/hadoop; rm /tmp/hdfs.keytab; chown hdfs:hadoop /usr/local/hadoop/etc/hadoop/hdfs.keytab; chmod o-rwx /usr/local/hadoop/etc/hadoop/hdfs.keytab
 
 - shell: kadmin.local -q "xst -k /tmp/yarn.keytab yarn/{{ master }}.{{dns_domain}}@{{ kerberos_realm }} HTTP/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"; cp /tmp/yarn.keytab /usr/local/hadoop/etc/hadoop; rm /tmp/yarn.keytab; chown yarn:hadoop /usr/local/hadoop/etc/hadoop/yarn.keytab; chmod o-rwx /usr/local/hadoop/etc/hadoop/yarn.keytab
 
-- shell: kadmin.local -q "addprinc -randkey hive/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"
+- shell: kadmin.local -q "xst -k /tmp/zookeeper.keytab zookeeper/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"; cp /tmp/zookeeper.keytab /usr/local/zookeeper/conf; rm /tmp/zookeeper.keytab; chown zookeeper:zookeeper /usr/local/zookeeper/conf/zookeeper.keytab; chmod o-rwx /usr/local/zookeeper/conf/zookeeper.keytab
+
+- shell: kadmin.local -q "xst -k /tmp/zkcli.keytab zkcli@{{ kerberos_realm }}"; cp /tmp/zkcli.keytab /usr/local/zookeeper/conf; rm /tmp/zkcli.keytab; chown zookeeper:zookeeper /usr/local/zookeeper/conf/zkcli.keytab; chmod o-rwx /usr/local/zookeeper/conf/zkcli.keytab

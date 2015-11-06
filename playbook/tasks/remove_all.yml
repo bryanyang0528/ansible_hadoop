@@ -40,3 +40,8 @@
     when: secure
   - shell: kadmin.local -q "delprinc -force HTTP/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"
     when: secure
+  - shell: kadmin.local -q "delprinc -force zookeeper/{{ master }}.{{dns_domain}}@{{ kerberos_realm }}"
+    when: secure
+  - shell: kadmin.local -q "delprinc -force zkcli@{{ kerberos_realm }}"
+    when: secure
+
