@@ -11,3 +11,4 @@ popd  > /dev/null
 (cd $SCRIPT_PATH/packages; wget -c http://archive.cloudera.com/cdh5/cdh/5/zookeeper-3.4.5-cdh5.4.7.tar.gz)
 (cd $SCRIPT_PATH/packages; wget -c http://archive.cloudera.com/cdh5/cdh/5/hadoop-2.6.0-cdh5.4.7.tar.gz)
 (cd $SCRIPT_PATH/packages; wget -c http://www.us.apache.org/dist/spark/spark-1.5.1/spark-1.5.1-bin-without-hadoop.tgz)
+(cd $SCRIPT_PATH/packages; wget -c http://www.eu.apache.org/dist/kafka/0.8.2.2/kafka_2.10-0.8.2.2.tgz)
