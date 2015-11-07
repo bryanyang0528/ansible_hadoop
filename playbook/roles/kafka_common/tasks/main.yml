@@ -1,0 +1,35 @@
+- name: add group "kafka"
+  group: name=kafka state=present
+
+- name: add user "kafka"
+  user: name=kafka group=kafka home=/home/kafka shell=/bin/bash state=present force=yes generate_ssh_key=yes ssh_key_type=dsa ssh_key_bits=1024 remove=yes password=$6$rounds=656000$ob39w8CciVpcK.xV$/5k8mvq4K94AOyw4I8cNWKco7QrzvS3hhJhZahXbz0guQ6iFFMjMXm8XfodsfqgdCYWIJ.X4vkYx9cCtNhdJn1
+
+- name: zookeeper user copy .bash_profile
+  template: src=bash_profile dest=/home/kafka/.bash_profile owner=kafka group=kafka
+
+- name: delete symlink kafka
+  shell: rm -rf /usr/local/kafka
+
+- name: Copy Kafka archive
+  copy: src=../../../packages/kafka_2.10-{{ kafka_version }}.tgz dest=/opt/kafka_2.10-{{ kafka_version }}.tgz
+
+- name: Extract archive
+  command: chdir=/usr/local /bin/tar zxvf /opt/kafka_2.10-{{ kafka_version }}.tgz -C /opt/ creates=/opt/kafka_2.10-{{ kafka_version }}
+
+- name: Symlink install directory
+  file: src=/opt/kafka_2.10-{{ kafka_version }} path=/usr/local/kafka state=link
+
+- name: Remove Kafka archive
+  command: rm -f /opt/kafka_2.10-{{ kafka_version }}.tgz
+
+- name: Change ownership of Kafka installation
+  file: path=/usr/local/kafka/ owner=kafka group=kafka state=directory mode=u+rwx,go-rwx recurse=yes
+  
+- name: Create the Kafka data logs directory
+  command: mkdir -p /data/kafka/logs creates=/data/kafka/logs
+
+- name: Change ownership and rights of the log directory
+  file: path=/data/kafka owner=kafka group=kafka state=directory mode=u+rwx,go-rwx recurse=yes
+  
+- name: Copy slaves file
+  template: src=../../../../conf/kafka_server.properties dest=/usr/local/kafka/config/server.properties

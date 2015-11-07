@@ -1,0 +1,5 @@
+---
+- hosts: slaves
+  tasks:
+  - name: Stop kafka
+    shell: su - kafka -c '/usr/local/kafka/bin/kafka-server-stop.sh /usr/local/kafka/config/server.properties'

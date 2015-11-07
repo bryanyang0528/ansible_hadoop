@@ -34,6 +34,18 @@
   roles:
   - spark_common
 
+- hosts: slaves
+  roles:
+  - kafka_common
+  tags:
+    - kafka
+
+- hosts: master
+  roles:
+  - kafka_server
+  tags:
+    - kafka
+
 - hosts: master
   tasks:
   - name: Configure hdfs dirs

@@ -14,6 +14,17 @@
   - shell: userdel mapred
   - shell: userdel hadoop
 
+- hosts: slaves
+  tasks:
+  - name: Remove Kafka
+    shell: userdel kafka
+  - shell: rm -rf /home/kafka
+  - shell: rm -rf /opt/kafka*
+  - shell: rm -rf /usr/local/kafka
+  - shell: rm -rf /data/kafka
+  tags:
+    - kafka
+
 - hosts: master
   tasks:
   - name: Remove hadoop

@@ -41,3 +41,6 @@ mapreduce_reduce_java_opts_max_heap: 1638
 mapreduce_reduce_cpu_vcores: 1
 yarn_app_mapreduce_am_resource_mb: 1024
 yarn_app_mapreduce_am_resource_cpu_vcores: 1
+
+# Kafka
+kafka_ids: [1, 2, 3, 4]
