@@ -1,0 +1,11 @@
+---
+- hosts: slaves
+  tasks:
+  - template: src=../../conf/kafka_server.properties dest=/usr/local/kafka/config/server.properties
+
+- hosts: master
+  tasks:
+  - shell: ssh {{ item.0 }} sed -i -e "s/broker.id=0/broker.id={{ item.1 }}/g" /usr/local/kafka/config/server.properties
+    with_together:
+    - "{{ groups.slaves }}"
+    - "{{ kafka_ids }}"

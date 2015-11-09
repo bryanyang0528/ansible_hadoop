@@ -1,4 +1,10 @@
 ---
+- hosts: master
+  tasks:
+  - name: Stop hdfs
+    shell: su - hdfs -c '/usr/local/hadoop/sbin/stop-dfs.sh'
+  - shell: /usr/local/hadoop/sbin/stop-secure-dns.sh
+
 - hosts: all
   tasks:
   - name: Reconfigure hdfs
@@ -6,3 +12,9 @@
   - template: src=../../conf/hadoop-env.sh dest=/usr/local/hadoop/etc/hadoop/hadoop-env.sh
   - template: src=../../conf/hdfs-site.xml dest=/usr/local/hadoop/etc/hadoop/hdfs-site.xml
   - template: src=../../conf/hadoop-metrics2.properties dest=/usr/local/hadoop/etc/hadoop/hadoop-metrics2.properties
+
+- hosts: master
+  tasks:
+  - name: Start hdfs
+    shell: su - hdfs -c '/usr/local/hadoop/sbin/start-dfs.sh'
+  - shell: /usr/local/hadoop/sbin/start-secure-dns.sh

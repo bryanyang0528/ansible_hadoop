@@ -7,4 +7,4 @@ pushd . > /dev/null
 cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
-ansible-playbook --sudo -i $SCRIPT_PATH/../playbook/hosts $SCRIPT_PATH/../playbook/tasks/reconfigure_yarn.yml
+ansible-playbook --sudo -i $SCRIPT_PATH/../playbook/hosts $SCRIPT_PATH/../playbook/tasks/reconfigure_kafka.yml

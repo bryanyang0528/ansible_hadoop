@@ -31,5 +31,5 @@
 - name: Change ownership and rights of the log directory
   file: path=/data/kafka owner=kafka group=kafka state=directory mode=u+rwx,go-rwx recurse=yes
   
-- name: Copy slaves file
+- name: Copy server.properties file
   template: src=../../../../conf/kafka_server.properties dest=/usr/local/kafka/config/server.properties
