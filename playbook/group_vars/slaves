@@ -1,2 +1,2 @@
-spark_version: 1.5.1
+spark_version: 1.5.2
 kafka_version: 0.8.2.2
