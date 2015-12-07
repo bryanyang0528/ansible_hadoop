@@ -1,20 +1,20 @@
 - name: Copy Spark archive
-  copy: src=../../../packages/spark-{{ spark_version }}-bin-without-hadoop.tgz dest=/tmp/spark-{{ spark_version }}-bin-without-hadoop.tgz
+  copy: src=../../../packages/spark-{{ spark_version }}.tar.gz dest=/tmp/spark-{{ spark_version }}.tar.gz
 
 - name: Extract archive
-  command: chdir=/usr/local /bin/tar xvf /tmp/spark-{{ spark_version }}-bin-without-hadoop.tgz -C /tmp/ creates=/tmp/spark-{{ spark_version }}-without-hadoop
+  command: chdir=/usr/local /bin/tar xvf /tmp/spark-{{ spark_version }}.tar.gz -C /tmp/ creates=/tmp/spark-{{ spark_version }}
 
 - name: Remove an eventual previous yarn shuffle assembly
   shell: rm -rf /usr/local/hadoop/share/hadoop/yarn/spark-*-yarn-shuffle.jar
 
 - name: Copy yarn shuffle assembly
-  shell: cp /tmp/spark-{{ spark_version }}-bin-without-hadoop/lib/spark-{{ spark_version }}-yarn-shuffle.jar /usr/local/hadoop/share/hadoop/yarn
+  shell: cp /tmp/spark-{{ spark_version }}/lib/spark-{{ spark_version }}-yarn-shuffle.jar /usr/local/hadoop/share/hadoop/yarn
 
 - name: Change ownership of the shuffle assembly
   file: path=/usr/local/hadoop/share/hadoop/yarn/spark-{{ spark_version }}-yarn-shuffle.jar owner=hadoop group=hadoop mode="u=rwx,g=rwx,o=rx"
 
 - name: Remove spark archive
-  shell: rm -rf /tmp/spark-{{ spark_version }}-bin-without-hadoop*
+  shell: rm -rf /tmp/spark-{{ spark_version }}*
 
   
   
