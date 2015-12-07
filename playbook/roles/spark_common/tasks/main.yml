@@ -16,9 +16,17 @@
 - name: Remove spark archive
   shell: rm -rf /tmp/spark-{{ spark_version }}*
 
-  
-  
-  
+- name: Download jackson-databind jar
+  shell: cd /usr/local/hadoop/share/hadoop/yarn; wget http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.2.3/jackson-databind-2.2.3.jar; chown hadoop:hadoop jackson-databind-2.2.3.jar
+
+- name: Download jackson-core jar
+  shell: cd /usr/local/hadoop/share/hadoop/yarn; wget http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.2.3/jackson-core-2.2.3.jar; chown hadoop:hadoop jackson-core-2.2.3.jar
+
+- name: Download jackson-annotations jar
+  shell: cd /usr/local/hadoop/share/hadoop/yarn; wget http://central.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.2.3/jackson-annotations-2.2.3.jar; chown hadoop:hadoop jackson-annotations-2.2.3.jar
+
+- name: Copy leveldb library
+  copy: src=../../../../conf/libleveldbjni.so dest=/usr/local/hadoop/lib/native/libleveldbjni.so group=hadoop
   
 
   
